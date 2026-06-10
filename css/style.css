@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.zona-batalha {
+    width: 100vw;       /* Ocupa 100% da largura da tela */
+    height: 100vh;      /* Ocupa 100% da altura da tela */
+    border-bottom: 30px solid #222;
+    background: url('../img/cidade.jpg') no-repeat center center;
+    background-size: cover; 
+    position: relative;
+    overflow: hidden;
+    /* Removido o max-width e o border-radius para não quebrar o visual da tela cheia */
+    cursor: pointer;
+}
+
+/* Ajuste na tela de Game Over para garantir que ela continue centralizada e bonita na tela cheia */
+.tela-game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; 
+    max-width: 700px; 
+    height: auto;
+    z-index: 20; 
+    background: rgba(0, 0, 0, 0.8); /* Um pouco mais escura para dar destaque */
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* O GODZILLA */
+.monstro-player {
+    width: 320px; 
+    height: auto;
+    object-fit: contain;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    z-index: 3;
+}
+
+/* PULO */
+.animacao-pulo {
+    animation: puloKaiju 800ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+@keyframes puloKaiju {
+    0% { bottom: 0; }
+    50% { bottom: 270px; } 
+    100% { bottom: 0; }
+}
+
+/* ATAQUE LASER */
+.animacao-ataque {
+    transform: scale(1.05) rotate(-2deg);
+    transition: transform 0.05s ease-in-out;
+}
+
+/* BASE DO PRÉDIO */
+.ameaca-cidade {
+    height: 200px; 
+    width: auto;
+    object-fit: contain;
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    z-index: 2;
+}
+
+/* CLASSE QUE FAZ O PRÉDIO SE MOVER (Ativada por JavaScript) */
+.predio-correndo {
+    animation: movimentoPredio 1.8s linear infinite;
+}
+
+@keyframes movimentoPredio {
+    0% { left: 100%; }
+    100% { left: -250px; }
+}
+
+/* EXPLOSÃO */
+.efeito-fogo {
+    height: 240px;
+    width: auto;
+    object-fit: contain;
+    position: absolute;
+    bottom: 0;
+    z-index: 4;
+}
+
+/* TELA DE GAME OVER (LOST.PNG) - AMPLIADA */
+.tela-game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%; 
+    max-width: 700px; 
+    height: auto;
+    z-index: 20; 
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+}
